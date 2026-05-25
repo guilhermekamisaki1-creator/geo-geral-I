@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 05 — Novos Fluxos Migratórios | Geografia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211b15;
+    --ink-soft:#473d31;
+    --paper:#f3ead9;
+    --paper-2:#eae0cb;
+    --card:#fbf6ea;
+    --card-2:#f7efdd;
+    --rust:#b13a20;
+    --rust-deep:#7c2814;
+    --gold:#b3812f;
+    --sage:#46604e;
+    --blue:#2f4a6b;
+    --line:rgba(33,27,21,.14);
+    --line-strong:rgba(33,27,21,.28);
+    --shadow:0 14px 34px -18px rgba(33,27,21,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Newsreader',Georgia,serif;
+    font-size:19px;
+    line-height:1.72;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  /* ---------- progress + nav ---------- */
+  #progress{
+    position:fixed;top:0;left:0;height:4px;width:0%;
+    background:linear-gradient(90deg,var(--rust),var(--gold));
+    z-index:60;transition:width .12s linear;
+  }
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(33,27,21,.97);
+    border-bottom:2px solid var(--rust);
+  }
+  nav .navwrap{
+    max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:6px;
+    padding:9px 22px;overflow-x:auto;scrollbar-width:none;
+  }
+  nav .navwrap::-webkit-scrollbar{display:none;}
+  nav .brand{
+    font-family:'Zilla Slab',serif;font-weight:700;color:var(--paper);
+    font-size:.92rem;letter-spacing:.04em;white-space:nowrap;margin-right:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  nav .dot{width:14px;height:14px;border-radius:50%;background:var(--rust);
+    box-shadow:0 0 0 3px rgba(177,58,32,.3);flex:none;}
+  nav a{
+    font-family:'Archivo',sans-serif;font-size:.74rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.06em;
+    color:#cabfa9;text-decoration:none;white-space:nowrap;
+    padding:6px 11px;border-radius:6px;transition:.18s;
+  }
+  nav a:hover{color:#fff;background:rgba(177,58,32,.32);}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:1020px;margin:0 auto;padding:0 26px;position:relative;z-index:2;}
+  section{padding:62px 0 14px;}
+
+  /* ---------- hero ---------- */
+  header.hero{
+    position:relative;z-index:2;
+    background:
+      radial-gradient(900px 380px at 78% -8%,rgba(177,58,32,.34),transparent 60%),
+      linear-gradient(180deg,#211b15,#2c241b);
+    color:var(--paper);
+    padding:74px 0 66px;
+    border-bottom:3px solid var(--rust);
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;
+    border-radius:50%;border:2px solid rgba(243,234,217,.22);
+    box-shadow:inset 0 0 0 26px rgba(177,58,32,.16);
+  }
+  .kicker{
+    font-family:'Archivo',sans-serif;font-size:.78rem;font-weight:700;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--rust);
+    display:inline-block;margin-bottom:18px;
+    border-bottom:1px solid rgba(177,58,32,.5);padding-bottom:6px;
+  }
+  header.hero h1{
+    font-family:'Zilla Slab',serif;font-weight:700;
+    font-size:clamp(2.7rem,7vw,4.7rem);line-height:1.02;
+    letter-spacing:-.01em;text-transform:uppercase;
+    text-shadow:3px 3px 0 rgba(0,0,0,.35);
+  }
+  header.hero h1 em{font-style:normal;color:var(--rust);}
+  .hero-sub{
+    margin-top:22px;max-width:640px;font-size:1.16rem;color:#d8cdb6;
+    font-family:'Newsreader',serif;
+  }
+  .hero-meta{
+    margin-top:30px;display:flex;flex-wrap:wrap;gap:10px;
+  }
+  .hero-meta span{
+    font-family:'Archivo',sans-serif;font-size:.72rem;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;
+    background:rgba(243,234,217,.09);border:1px solid rgba(243,234,217,.2);
+    color:#e4dbc6;padding:7px 13px;border-radius:30px;
+  }
+
+  /* ---------- typography ---------- */
+  .sec-num{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.78rem;
+    letter-spacing:.22em;color:var(--rust);text-transform:uppercase;
+    display:block;margin-bottom:8px;
+  }
+  h2{
+    font-family:'Zilla Slab',serif;font-weight:700;
+    font-size:clamp(1.85rem,4.2vw,2.7rem);line-height:1.08;
+    color:var(--ink);letter-spacing:-.005em;
+    padding-bottom:14px;margin-bottom:8px;position:relative;
+  }
+  h2::after{
+    content:"";position:absolute;left:0;bottom:0;width:74px;height:5px;
+    background:var(--rust);border-radius:3px;
+  }
+  h3{
+    font-family:'Zilla Slab',serif;font-weight:600;
+    font-size:1.42rem;color:var(--rust-deep);
+    margin:34px 0 10px;line-height:1.2;
+  }
+  h4{
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:1.1rem;
+    color:var(--ink);margin:20px 0 6px;
+  }
+  p{margin:13px 0;color:var(--ink-soft);}
+  .lead{font-size:1.2rem;color:var(--ink);margin-top:20px;}
+  strong{color:var(--ink);font-weight:600;}
+  em.term{font-style:italic;color:var(--rust-deep);font-weight:500;}
+  ul,ol{margin:13px 0 13px 4px;padding-left:24px;color:var(--ink-soft);}
+  li{margin:7px 0;}
+  li::marker{color:var(--rust);}
+  a.inline{color:var(--rust-deep);text-decoration:underline;text-underline-offset:3px;}
+
+  /* ---------- cards / boxes ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);
+    border-left:5px solid var(--rust);
+    border-radius:10px;padding:24px 26px;margin:22px 0;
+    box-shadow:var(--shadow);
+  }
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr;}}
+
+  .box{
+    border-radius:10px;padding:18px 22px;margin:20px 0;
+    border:1px solid var(--line);position:relative;
+  }
+  .box .tag{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.72rem;
+    letter-spacing:.13em;text-transform:uppercase;display:block;margin-bottom:6px;
+  }
+  .box p{margin:6px 0;}
+  .box.complemento{background:#f4ecda;border-left:5px solid var(--gold);}
+  .box.complemento .tag{color:var(--gold);}
+  .box.pegadinha{background:#f6e6df;border-left:5px solid var(--rust);}
+  .box.pegadinha .tag{color:var(--rust);}
+  .box.prova{background:#e7ede8;border-left:5px solid var(--sage);}
+  .box.prova .tag{color:var(--sage);}
+  .box.dado{background:#e6ebf1;border-left:5px solid var(--blue);}
+  .box.dado .tag{color:var(--blue);}
+
+  /* ---------- tables ---------- */
+  .tablewrap{overflow-x:auto;margin:22px 0;border-radius:10px;border:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:.97rem;min-width:520px;}
+  caption{
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:1rem;
+    color:var(--rust-deep);padding:14px 16px 4px;text-align:left;
+  }
+  th,td{padding:11px 15px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  thead th{
+    background:var(--ink);color:var(--paper);
+    font-family:'Archivo',sans-serif;font-size:.74rem;font-weight:700;
+    letter-spacing:.07em;text-transform:uppercase;
+  }
+  tbody tr:nth-child(even){background:var(--card-2);}
+  td.num{font-variant-numeric:tabular-nums;font-weight:600;color:var(--rust-deep);white-space:nowrap;}
+  .partida thead th{background:var(--rust-deep);}
+  .chegada thead th{background:var(--sage);}
+
+  /* ---------- formula diagram ---------- */
+  .formula{
+    background:#211b15;color:var(--paper);border-radius:12px;
+    padding:30px 24px;margin:24px 0;text-align:center;
+  }
+  .frow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:14px 0;}
+  .fbox{
+    background:rgba(243,234,217,.08);border:1px solid rgba(243,234,217,.26);
+    border-radius:8px;padding:11px 16px;min-width:78px;
+  }
+  .fbox b{font-family:'Zilla Slab',serif;font-size:1.05rem;color:#fff;display:block;}
+  .fbox small{font-family:'Archivo',sans-serif;font-size:.62rem;letter-spacing:.06em;
+    text-transform:uppercase;color:#bdb29a;}
+  .fbox.hi{background:rgba(177,58,32,.28);border-color:var(--rust);}
+  .fop{font-family:'Zilla Slab',serif;font-size:1.5rem;color:var(--rust);font-weight:700;}
+  .fnote{font-family:'Archivo',sans-serif;font-size:.74rem;letter-spacing:.08em;
+    text-transform:uppercase;color:#bdb29a;margin-top:4px;}
+
+  /* ---------- timeline ---------- */
+  .timeline{margin:24px 0;border-left:3px solid var(--line-strong);padding-left:26px;}
+  .tnode{position:relative;margin-bottom:24px;}
+  .tnode::before{
+    content:"";position:absolute;left:-35px;top:5px;width:15px;height:15px;
+    border-radius:50%;background:var(--rust);border:3px solid var(--paper);
+    box-shadow:0 0 0 2px var(--rust);
+  }
+  .tnode .era{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.76rem;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--rust-deep);
+  }
+  .tnode h4{margin:2px 0 4px;}
+
+  /* ---------- quiz ---------- */
+  .quiz{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:24px 26px;margin:24px 0;box-shadow:var(--shadow);
+  }
+  .quiz .src{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.74rem;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--rust);
+    margin-bottom:10px;display:flex;align-items:center;gap:9px;
+  }
+  .quiz .src .qn{
+    background:var(--rust);color:#fff;width:26px;height:26px;border-radius:50%;
+    display:grid;place-items:center;font-size:.82rem;flex:none;
+  }
+  .quiz .stem{font-style:italic;color:var(--ink);}
+  .quiz .alts{list-style:none;padding:0;margin:14px 0 0;}
+  .quiz .alts li{
+    padding:9px 14px;margin:7px 0;border:1px solid var(--line);
+    border-radius:8px;background:var(--card-2);font-size:.97rem;
+  }
+  .quiz .alts li.right{
+    background:#e7ede8;border-color:var(--sage);border-left:4px solid var(--sage);
+    font-weight:500;
+  }
+  .reveal-btn{
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.78rem;
+    letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+    background:var(--ink);color:var(--paper);border:none;
+    padding:10px 18px;border-radius:7px;margin-top:14px;transition:.18s;
+  }
+  .reveal-btn:hover{background:var(--rust-deep);}
+  .answer{
+    display:none;margin-top:14px;padding:16px 18px;border-radius:8px;
+    background:#211b15;color:#e4dbc6;font-size:.96rem;
+  }
+  .answer.show{display:block;}
+  .answer .gab{
+    font-family:'Zilla Slab',serif;font-weight:700;color:#fff;font-size:1.1rem;
+  }
+  .answer .gab span{color:var(--rust);}
+
+  /* ---------- video buttons ---------- */
+  .videos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0;}
+  @media(max-width:720px){.videos{grid-template-columns:1fr;}}
+  a.vbtn{
+    display:flex;gap:14px;align-items:center;text-decoration:none;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:16px 18px;transition:.2s;box-shadow:var(--shadow);
+  }
+  a.vbtn:hover{transform:translateY(-3px);border-color:var(--rust);}
+  a.vbtn .play{
+    width:46px;height:46px;border-radius:10px;flex:none;
+    background:var(--rust);display:grid;place-items:center;
+  }
+  a.vbtn .play svg{width:20px;height:20px;}
+  a.vbtn .vtext b{
+    font-family:'Zilla Slab',serif;font-size:1.02rem;color:var(--ink);
+    display:block;line-height:1.18;
+  }
+  a.vbtn .vtext small{
+    font-family:'Archivo',sans-serif;font-size:.72rem;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--rust-deep);
+  }
+
+  /* ---------- misc ---------- */
+  .pushpull{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0;}
+  @media(max-width:620px){.pushpull{grid-template-columns:1fr;}}
+  .pp{border-radius:10px;padding:20px 22px;border:1px solid var(--line);}
+  .pp.repulsao{background:#f6e6df;}
+  .pp.atracao{background:#e7ede8;}
+  .pp h4{margin-top:0;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .chip{
+    font-family:'Archivo',sans-serif;font-size:.78rem;font-weight:600;
+    background:var(--card);border:1px solid var(--line-strong);
+    padding:5px 11px;border-radius:20px;color:var(--ink);
+  }
+  .keyrev{
+    background:var(--card);border:1px dashed var(--line-strong);
+    border-radius:10px;padding:8px 18px;margin:12px 0;
+  }
+  .keyrev summary{
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:1.08rem;
+    color:var(--rust-deep);cursor:pointer;padding:8px 0;list-style:none;
+  }
+  .keyrev summary::before{content:"▸ ";color:var(--rust);}
+  .keyrev[open] summary::before{content:"▾ ";}
+  .keyrev p{margin:4px 0 12px;}
+
+  footer{
+    background:#211b15;color:#bdb29a;margin-top:60px;
+    padding:40px 0 46px;border-top:3px solid var(--rust);
+    position:relative;z-index:2;
+  }
+  footer .wrap{text-align:center;}
+  footer b{color:var(--paper);font-family:'Zilla Slab',serif;}
+  footer .fsmall{font-family:'Archivo',sans-serif;font-size:.78rem;
+    letter-spacing:.04em;margin-top:10px;}
+
+  .divider{
+    text-align:center;color:var(--rust);font-size:1.3rem;
+    letter-spacing:1rem;margin:8px 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <div class="navwrap">
+    <span class="brand"><span class="dot"></span>TEMA 05 · MIGRAÇÕES</span>
+    <a href="#visao">Visão Geral</a>
+    <a href="#conceitos">Conceitos</a>
+    <a href="#historia">História</a>
+    <a href="#porque">Por que migrar</a>
+    <a href="#panorama">Panorama Atual</a>
+    <a href="#muros">Muros</a>
+    <a href="#consequencias">Consequências</a>
+    <a href="#pegadinhas">Pegadinhas</a>
+    <a href="#questoes">Questões</a>
+    <a href="#videos">Vídeos</a>
+    <a href="#revisao">Revisão</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker">Geografia Geral · Livro 04 · Frente A · Cap. 03</span>
+    <h1>Novos Fluxos<br><em>Migratórios</em></h1>
+    <p class="hero-sub">Uma aula completa — do conceito básico ao aprofundamento de vestibular — sobre o deslocamento humano pelo planeta: por que ele acontece, como mudou ao longo da história e o que ele revela sobre o mundo globalizado.</p>
+    <div class="hero-meta">
+      <span>2º ano — Ensino Médio</span>
+      <span>Preparação para vestibulares</span>
+      <span>Base: material do Prof. Bruno Mastrocola</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ VISÃO GERAL ============ -->
+<section id="visao">
+  <div class="wrap">
+    <span class="sec-num">01 — Abertura</span>
+    <h2>Visão geral do tema</h2>
+    <p class="lead">Migrar é, antes de tudo, <strong>humano</strong>. A espécie humana só ocupou todos os continentes porque se deslocou — e continua se deslocando. Este capítulo estuda esse fenômeno em três camadas.</p>
+    <p>O material de abertura mostra imagens fortes e atuais: <strong>venezuelanos</strong> cruzando a fronteira em Boa Vista (Roraima) à procura de trabalho; o povo <strong>rohingya</strong> fugindo de Mianmar em barcos precários; <strong>refugiados</strong> enfrentando o inverno na Europa; afegãos tentando embarcar em aviões no <strong>aeroporto de Cabul</strong> em 2021; e a polêmica <strong>separação de famílias</strong> de imigrantes na fronteira dos Estados Unidos. Essas cenas não são acidentes isolados — são a face visível de um sistema migratório mundial.</p>
+    <p>Para entender esse sistema, a aula percorre três grandes blocos:</p>
+    <div class="card">
+      <ol>
+        <li><strong>Conceitos e história</strong> — o vocabulário técnico (imigração, emigração, saldo migratório) e como os fluxos se organizaram desde a saída da África até hoje.</li>
+        <li><strong>Por que as pessoas migram</strong> — os fatores que <em class="term">expulsam</em> as pessoas de um lugar e os que as <em class="term">atraem</em> para outro.</li>
+        <li><strong>Panorama atual</strong> — os números do mundo de hoje, o paradoxo da globalização, os muros e "fortalezas" e as consequências da migração para quem parte e para quem recebe.</li>
+      </ol>
+    </div>
+    <div class="box prova">
+      <span class="tag">Por que isso cai tanto em prova</span>
+      <p>O tema cruza Geografia, Sociologia, Atualidades e Direitos Humanos. ENEM e vestibulares adoram cobrá-lo porque ele permite avaliar <strong>interpretação de mapas e gráficos</strong>, leitura crítica de texto e compreensão de processos globais (globalização, conflitos, xenofobia). É um dos assuntos mais "rentáveis" da Geografia humana.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONCEITOS ============ -->
+<section id="conceitos">
+  <div class="wrap">
+    <span class="sec-num">02 — Fundamentos</span>
+    <h2>Conceitos fundamentais</h2>
+    <p class="lead">Antes de analisar fluxos, é preciso dominar o vocabulário. Errar um conceito básico aqui derruba a questão inteira.</p>
+
+    <h3>O que é migração</h3>
+    <p><strong>Migração</strong> é o <em class="term">fluxo (deslocamento) de pessoas</em> de um lugar para outro, normalmente com mudança de residência. A partir desse conceito-mãe nascem dois termos que dependem do <strong>ponto de vista do observador</strong> — e essa é a primeira pegadinha do capítulo.</p>
+
+    <div class="grid2">
+      <div class="card" style="border-left-color:var(--sage);">
+        <h4 style="color:var(--sage);">▸ Imigração — ENTRADA</h4>
+        <p>É a <strong>chegada</strong> de pessoas a um território. Quem entra é <strong>imigrante</strong>. Visto do país que recebe.</p>
+        <p style="font-size:.92rem;"><em>Ex.: um venezuelano que chega ao Brasil é um <strong>imigrante</strong> no Brasil.</em></p>
+      </div>
+      <div class="card" style="border-left-color:var(--rust);">
+        <h4 style="color:var(--rust-deep);">▸ Emigração — SAÍDA</h4>
+        <p>É a <strong>saída</strong> de pessoas de um território. Quem sai é <strong>emigrante</strong>. Visto do país de origem.</p>
+        <p style="font-size:.92rem;"><em>Ex.: o mesmo venezuelano é um <strong>emigrante</strong> da Venezuela.</em></p>
+      </div>
+    </div>
+    <div class="box pegadinha">
+      <span class="tag">⚠ Pegadinha clássica</span>
+      <p>A <strong>mesma pessoa</strong> é imigrante e emigrante ao mesmo tempo — depende de qual país você está olhando. Dica de memorização: <strong>I</strong>migração = <strong>I</strong>ngresso (entra); <strong>E</strong>migração = <strong>E</strong>xterior / Êxodo (sai). Pense que o "E" sai da palavra.</p>
+    </div>
+
+    <h3>Saldo migratório (taxa de migração)</h3>
+    <p>Quando comparamos quantos entram com quantos saem, obtemos o <strong>saldo migratório</strong> — também chamado de <strong>taxa de migração</strong>:</p>
+    <div class="formula">
+      <div class="frow">
+        <div class="fbox hi"><b>Saldo Migratório</b><small>= Taxa de Migração</small></div>
+        <span class="fop">=</span>
+        <div class="fbox"><b>Imigração</b><small>entradas</small></div>
+        <span class="fop">−</span>
+        <div class="fbox"><b>Emigração</b><small>saídas</small></div>
+      </div>
+      <div class="fnote">Saldo positivo → mais gente entrou · Saldo negativo → mais gente saiu</div>
+    </div>
+    <ul>
+      <li><strong>Saldo migratório positivo:</strong> imigração maior que emigração. País <em>atrativo</em> (ex.: Estados Unidos, países do Golfo).</li>
+      <li><strong>Saldo migratório negativo:</strong> emigração maior que imigração. País <em>repulsivo</em> em termos migratórios (ex.: Venezuela e Síria hoje).</li>
+    </ul>
+
+    <h3>Como a migração entra no crescimento populacional</h3>
+    <p>O esquema do material conecta a migração ao <strong>crescimento da população</strong> de um país. Existem dois "motores" que fazem uma população crescer ou diminuir:</p>
+    <div class="formula">
+      <div class="frow">
+        <div class="fbox"><b>TN</b><small>Taxa de Natalidade</small></div>
+        <span class="fop">−</span>
+        <div class="fbox"><b>TM</b><small>Taxa de Mortalidade</small></div>
+        <span class="fop">+</span>
+        <div class="fbox"><b>TI</b><small>Taxa de Imigração</small></div>
+        <span class="fop">−</span>
+        <div class="fbox"><b>TE</b><small>Taxa de Emigração</small></div>
+      </div>
+      <div class="frow">
+        <div class="fbox hi"><b>Crescimento Vegetativo</b><small>(ou Natural)</small></div>
+        <span class="fop">+</span>
+        <div class="fbox hi"><b>Saldo Migratório</b><small></small></div>
+        <span class="fop">=</span>
+        <div class="fbox" style="background:rgba(179,129,47,.3);border-color:var(--gold);"><b>Crescimento Populacional</b><small>total</small></div>
+      </div>
+      <div class="fnote">TN − TM = crescimento vegetativo · TI − TE = saldo migratório</div>
+    </div>
+    <div class="box complemento">
+      <span class="tag">Complemento para melhor compreensão</span>
+      <p>O <strong>crescimento vegetativo</strong> (também chamado <strong>crescimento natural</strong>) mede a população "produzida internamente": nascimentos menos mortes. O <strong>saldo migratório</strong> mede a população "ganha ou perdida pelas fronteiras". A soma dos dois dá o <strong>crescimento populacional total (absoluto)</strong>.</p>
+      <p>Consequência importante para o vestibular: um país pode ter crescimento vegetativo <strong>baixo ou até negativo</strong> (caso de Alemanha, Itália e Japão, com poucos nascimentos e população envelhecida) e ainda assim manter a população estável <strong>graças à imigração</strong> — ou seja, graças a um saldo migratório positivo. A migração funciona como uma "reposição demográfica".</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTÓRIA ============ -->
+<section id="historia">
+  <div class="wrap">
+    <span class="sec-num">03 — Linha do tempo</span>
+    <h2>História dos fluxos migratórios</h2>
+    <p class="lead">Migrar não é novidade da globalização — é o que define a história da humanidade. Veja a sequência dos grandes deslocamentos.</p>
+
+    <h3>Os primeiros fluxos migratórios — a saída da África</h3>
+    <p>O mapa "Os primeiros fluxos migratórios" mostra a hipótese científica mais aceita: a teoria do <em class="term">"Out of Africa"</em> (origem africana única). A espécie <strong>Homo sapiens</strong> surgiu na <strong>África Oriental</strong> há cerca de <strong>200.000 anos</strong> e, a partir de aproximadamente <strong>60.000–70.000 anos atrás</strong>, espalhou-se pelo restante do planeta.</p>
+    <div class="timeline">
+      <div class="tnode">
+        <span class="era">≈ 200.000 anos</span>
+        <h4>Origem na África Oriental</h4>
+        <p>O Homo sapiens surge na região do <strong>Vale do Rift</strong> (leste africano) e ocupa o continente.</p>
+      </div>
+      <div class="tnode">
+        <span class="era">≈ 60.000–70.000 anos</span>
+        <h4>Saída da África</h4>
+        <p>Grupos humanos atravessam o Oriente Médio e iniciam a ocupação da Ásia.</p>
+      </div>
+      <div class="tnode">
+        <span class="era">≈ 50.000 anos</span>
+        <h4>Chegada à Oceania</h4>
+        <p>Ocupação da Austrália, atravessando o sudeste asiático.</p>
+      </div>
+      <div class="tnode">
+        <span class="era">≈ 15.000–12.000 anos</span>
+        <h4>Entrada nas Américas</h4>
+        <p>Travessia pelo <strong>Estreito de Bering</strong> (entre Ásia e América), favorecida pela última glaciação.</p>
+      </div>
+      <div class="tnode">
+        <span class="era">≈ 10.000 anos</span>
+        <h4>Chegada ao extremo sul da América</h4>
+        <p>A ocupação humana atinge o sul da América do Sul — o último grande território continental povoado.</p>
+      </div>
+    </div>
+    <div class="box complemento">
+      <span class="tag">Complemento para melhor compreensão</span>
+      <p>O mapa "A Walk Through Time" ilustra esse percurso como uma única e gigantesca caminhada de cerca de <strong>21.000 milhas</strong> (≈ 34.000 km), do leste da África até a Terra do Fogo. Os números nos mapas indicam <strong>milhares de anos antes do presente</strong>. Repare que as áreas em amarelo e laranja no primeiro mapa representam espécies humanas anteriores (<em>Homo erectus</em> e <em>Homo neanderthalensis</em>), que se dispersaram antes do <em>sapiens</em>.</p>
+    </div>
+
+    <h3>A síntese histórica — fluxos pelo mundo</h3>
+    <p>O mapa-síntese organiza os grandes fluxos migratórios da era moderna e contemporânea em <strong>quatro grandes correntes</strong>:</p>
+    <div class="tablewrap">
+      <table>
+        <caption>Síntese — grandes correntes migratórias mundiais</caption>
+        <thead>
+          <tr><th>Período</th><th>Corrente migratória</th><th>Características</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">Séc. XVI–XIX</td>
+            <td>Colonização europeia</td>
+            <td>Europeus se deslocam para colonizar Américas, África e Ásia (administração, exploração econômica).</td>
+          </tr>
+          <tr>
+            <td class="num">Séc. XVIII–XIX</td>
+            <td>Tráfico de escravizados africanos</td>
+            <td>Migração <strong>forçada</strong>: milhões de africanos transportados à força para as Américas. É o oposto da migração voluntária.</td>
+          </tr>
+          <tr>
+            <td class="num">1830–1939</td>
+            <td>Grande imigração europeia</td>
+            <td>Pobreza, guerras e excedente populacional na Europa empurram milhões para as Américas e a Oceania (inclui a imigração para o Brasil).</td>
+          </tr>
+          <tr>
+            <td class="num">Após 1945</td>
+            <td>Inversão do fluxo</td>
+            <td>O sentido se inverte: agora são os países pobres (ex-colônias) que enviam migrantes para os países ricos, sobretudo Europa, EUA e Golfo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box prova">
+      <span class="tag">O detalhe que cai em prova</span>
+      <p>A grande virada está em <strong>1945</strong>. Antes, a Europa era <strong>área de partida</strong> (emigração). Depois da Segunda Guerra, ela vira <strong>área de chegada</strong> (imigração), recebendo trabalhadores de suas antigas colônias na África e na Ásia. Essa <strong>inversão do sentido dos fluxos</strong> é um dos pontos mais cobrados do tema.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUE MIGRAR ============ -->
+<section id="porque">
+  <div class="wrap">
+    <span class="sec-num">04 — Causas</span>
+    <h2>Por que as pessoas migram?</h2>
+    <p class="lead">O material lista seis motivos: <strong>emprego, melhores salários, estudos, guerras, perseguições religiosas e desastres ambientais</strong>. Vamos organizá-los de forma que o vestibular cobra.</p>
+
+    <h3>Fatores de repulsão e de atração (teoria push–pull)</h3>
+    <div class="box complemento">
+      <span class="tag">Complemento para melhor compreensão</span>
+      <p>Geógrafos classificam as causas da migração em dois grupos. Os <strong>fatores de repulsão (push)</strong> são as condições negativas que <em>empurram</em> a pessoa para fora do lugar de origem. Os <strong>fatores de atração (pull)</strong> são as condições positivas que <em>puxam</em> a pessoa para o destino. Quase toda migração resulta da combinação dos dois.</p>
+    </div>
+    <div class="pushpull">
+      <div class="pp repulsao">
+        <h4 style="color:var(--rust-deep);">↗ Fatores de REPULSÃO (push)</h4>
+        <p style="font-size:.95rem;">Empurram para fora da origem.</p>
+        <div class="chips">
+          <span class="chip">Desemprego</span>
+          <span class="chip">Salários baixos</span>
+          <span class="chip">Guerras / conflitos</span>
+          <span class="chip">Perseguição religiosa</span>
+          <span class="chip">Perseguição política</span>
+          <span class="chip">Desastres ambientais</span>
+          <span class="chip">Pobreza / fome</span>
+        </div>
+      </div>
+      <div class="pp atracao">
+        <h4 style="color:var(--sage);">↘ Fatores de ATRAÇÃO (pull)</h4>
+        <p style="font-size:.95rem;">Puxam em direção ao destino.</p>
+        <div class="chips">
+          <span class="chip">Ofertas de emprego</span>
+          <span class="chip">Melhores salários</span>
+          <span class="chip">Acesso a estudos</span>
+          <span class="chip">Segurança / paz</span>
+          <span class="chip">Saúde e serviços</span>
+          <span class="chip">Liberdade religiosa</span>
+          <span class="chip">Qualidade de vida</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Migração voluntária × migração forçada</h3>
+    <p>Outra classificação essencial separa quem migra <strong>por escolha</strong> de quem migra <strong>sem alternativa</strong>:</p>
+    <ul>
+      <li><strong>Migração voluntária:</strong> a pessoa decide migrar buscando melhoria de vida. Predominam motivos <em>econômicos</em> — emprego, salários, estudos. É a migração do <strong>imigrante econômico</strong>.</li>
+      <li><strong>Migração forçada:</strong> a pessoa é obrigada a sair para sobreviver. Predominam guerras, perseguições e catástrofes. É a migração do <strong>refugiado</strong> e do <strong>deslocado</strong>.</li>
+    </ul>
+    <div class="box complemento">
+      <span class="tag">Complemento para melhor compreensão — vocabulário do refúgio</span>
+      <p>Distinguir esses termos é frequentemente cobrado:</p>
+      <ul style="margin-top:6px;">
+        <li><strong>Refugiado:</strong> cruzou uma <strong>fronteira internacional</strong> fugindo de guerra, violência ou perseguição. Tem proteção garantida pelo direito internacional (atuação do <strong>ACNUR</strong>, a Agência da ONU para Refugiados).</li>
+        <li><strong>Solicitante de asilo:</strong> pediu reconhecimento como refugiado, mas o pedido ainda está em análise.</li>
+        <li><strong>Deslocado interno:</strong> foi forçado a sair de casa, mas <strong>permaneceu dentro do próprio país</strong> — por isso não é, tecnicamente, um refugiado.</li>
+        <li><strong>Refugiado ambiental (ou climático):</strong> categoria recente — pessoas deslocadas por secas, enchentes, elevação do nível do mar e outros desastres. Ainda não tem pleno reconhecimento jurídico internacional.</li>
+      </ul>
+    </div>
+    <div class="box pegadinha">
+      <span class="tag">⚠ Pegadinha clássica</span>
+      <p>Nem todo <strong>imigrante</strong> é <strong>refugiado</strong>. O imigrante econômico migra por escolha, em busca de melhores condições; o refugiado migra forçado, fugindo de risco de vida. Trocar os dois conceitos é um erro recorrente — e as bancas exploram exatamente isso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANORAMA ATUAL ============ -->
+<section id="panorama">
+  <div class="wrap">
+    <span class="sec-num">05 — O mundo hoje</span>
+    <h2>Panorama atual dos fluxos migratórios</h2>
+    <p class="lead">A globalização aumentou a circulação de mercadorias, capitais e informação. Mas e as <strong>pessoas</strong>? Aqui está o grande paradoxo do capítulo.</p>
+
+    <h3>O paradoxo da globalização</h3>
+    <p>O material lança duas perguntas: a globalização traz <strong>mais mobilidade pelos territórios</strong>? E <strong>mais facilidade para migrar</strong>? A imagem das rotas de aviões — milhares de linhas verdes recriando o mapa-múndi — sugere que sim: o planeta está conectado como nunca.</p>
+    <div class="card">
+      <p><strong>Mas a resposta correta é: depende de quem migra.</strong> A globalização libera intensamente o fluxo de <em>mercadorias, capitais e informações</em>. Já o fluxo de <em>pessoas pobres</em> é cada vez mais <strong>controlado e restringido</strong>. As fronteiras ficaram <strong>seletivas</strong>: abertas para turistas, executivos e mercadorias; fechadas e vigiadas para o trabalhador pobre e o refugiado. É o chamado <strong>paradoxo da globalização</strong> — um mundo "sem fronteiras" para alguns e cheio de muros para outros.</p>
+    </div>
+
+    <h3>Os números do mundo atual</h3>
+    <p>A tabela compara o <strong>Relatório Mundial de Migração</strong> de 2000 com o de 2026. A evolução é impressionante:</p>
+    <div class="tablewrap">
+      <table>
+        <caption>Tabela 1 — Relatório Mundial de Migração: 2000 × 2026</caption>
+        <thead>
+          <tr><th>Indicador</th><th>Relatório de 2000</th><th>Relatório de 2026</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Migrantes internacionais (estimativa)</td><td class="num">150 milhões</td><td class="num">304 milhões</td></tr>
+          <tr><td>Proporção da população mundial que é migrante</td><td class="num">2,8%</td><td class="num">3,7%</td></tr>
+          <tr><td>Proporção de mulheres entre os migrantes internacionais</td><td class="num">47,5%</td><td class="num">48,0%</td></tr>
+          <tr><td>Região com maior proporção de migrantes</td><td class="num">Oceania</td><td class="num">Oceania</td></tr>
+          <tr><td>País com maior proporção de migrantes</td><td class="num">Emir. Árabes Unidos</td><td class="num">Catar</td></tr>
+          <tr><td>Trabalhadores migrantes</td><td class="num">—</td><td class="num">167,7 milhões</td></tr>
+          <tr><td>Remessas internacionais globais (USD)</td><td class="num">128 bilhões</td><td class="num">905 bilhões</td></tr>
+          <tr><td>Número de refugiados</td><td class="num">14 milhões</td><td class="num">36,9 milhões</td></tr>
+          <tr><td>Pessoas deslocadas internamente</td><td class="num">21 milhões</td><td class="num">83,4 milhões</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box dado">
+      <span class="tag">Como ler esses dados</span>
+      <p>Três leituras valem ouro na prova:</p>
+      <ul style="margin-top:6px;">
+        <li>O número de migrantes <strong>dobrou</strong> (150 → 304 milhões), mas eles ainda são uma <strong>minoria</strong> da humanidade: apenas <strong>3,7%</strong>. A maior parte das pessoas <em>não</em> migra — o que desmente a ideia de uma "invasão" mundial.</li>
+        <li>O salto dos <strong>refugiados</strong> (14 → 36,9 milhões) e dos <strong>deslocados internos</strong> (21 → 83,4 milhões) revela um mundo com <strong>mais conflitos e crises</strong>. A migração forçada cresceu mais rápido que a voluntária.</li>
+        <li>As <strong>remessas</strong> (dinheiro que migrantes enviam às famílias) saltaram de 128 para <strong>905 bilhões de dólares</strong> — fonte de renda decisiva para muitos países pobres, muitas vezes maior que o investimento estrangeiro recebido.</li>
+      </ul>
+    </div>
+
+    <h3>De onde saem e para onde vão</h3>
+    <p>O infográfico do total global — <strong>304 milhões de migrantes</strong> — separa duas perguntas que não devem ser confundidas: <strong>número absoluto</strong> e <strong>proporção (porcentagem)</strong>.</p>
+    <div class="grid2">
+      <div class="card" style="border-left-color:var(--rust);">
+        <h4 style="color:var(--rust-deep);">Principais países de ORIGEM</h4>
+        <p style="font-size:.93rem;">Quem mais "exporta" migrantes (em milhões):</p>
+        <ul style="font-size:.93rem;">
+          <li>Índia — 18,5 · China — 11,7 · México — 11,6</li>
+          <li>Ucrânia — 9,8 · Rússia — 9,1 · Síria — 8,9</li>
+          <li>Bangladesh — 8,7 · Venezuela — 8,3</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color:var(--sage);">
+        <h4 style="color:var(--sage);">Principais países de DESTINO</h4>
+        <p style="font-size:.93rem;">Quem mais recebe migrantes, em número (milhões):</p>
+        <ul style="font-size:.93rem;">
+          <li><strong>EUA — 52,4</strong> (mais que os 4 seguintes somados)</li>
+          <li>Alemanha — 16,8 · Arábia Saudita — 13,7</li>
+          <li>Reino Unido — 11,8 · França — 9,2 · Espanha — 8,9</li>
+        </ul>
+      </div>
+    </div>
+    <div class="box pegadinha">
+      <span class="tag">⚠ Pegadinha: número absoluto ≠ proporção</span>
+      <p>Os <strong>EUA</strong> têm o maior <strong>número</strong> de imigrantes do mundo (52,4 milhões). Mas, em <strong>proporção da população</strong>, os campeões são os pequenos países do <strong>Golfo Pérsico</strong>: <strong>Catar (76,7%)</strong>, Emirados Árabes (74%) e Kuwait (67,3%) — neles, a maioria da população é estrangeira. Já a Síria (36%), a Venezuela (29%) e a Ucrânia (26%) têm proporções altíssimas de <strong>emigrantes</strong> em relação à própria população — sinal claro de países em crise ou guerra. Confundir "maior número" com "maior proporção" é um erro que a banca adora.</p>
+    </div>
+
+    <h3>Conflitos como motor da migração forçada</h3>
+    <p>A reportagem do material aponta que o mundo vive o <strong>maior número de guerras desde o fim da União Soviética</strong>: em 2022, eram <strong>55 conflitos em 38 países</strong>. Conflitos como os da <strong>Síria, Ucrânia, Iraque, Sudão do Sul, Rep. Dem. do Congo e Mianmar</strong> figuram entre os que mais geraram deslocamentos. Isso explica diretamente o crescimento da migração forçada visto na tabela.</p>
+  </div>
+</section>
+
+<!-- ============ MUROS ============ -->
+<section id="muros">
+  <div class="wrap">
+    <span class="sec-num">06 — Barreiras</span>
+    <h2>As fortalezas do mundo e os muros</h2>
+    <p class="lead">Se a globalização aproxima o planeta, por que o número de muros nas fronteiras só aumenta? Esta seção fecha o paradoxo.</p>
+
+    <h3>As "fortalezas" do mundo rico</h3>
+    <p>O mapa "As fortalezas do mundo atual" mostra como os países ricos se transformaram em <strong>territórios-fortaleza</strong>: regiões cercadas por barreiras legais, físicas e tecnológicas para <strong>impedir a entrada de migrantes pobres</strong>. Os principais instrumentos são:</p>
+    <ul>
+      <li><strong>Barreiras de proteção:</strong> muros, alambrados, campos minados, vigilância eletrônica e térmica nas fronteiras.</li>
+      <li><strong>Centros de internação (detenção):</strong> locais onde migrantes que conseguiram entrar ficam retidos antes de eventual deportação.</li>
+      <li><strong>Zonas-tampão:</strong> acordos de cooperação militar e policial com países vizinhos para "barrar" o migrante antes que ele chegue ao destino.</li>
+      <li><strong>Frentes secundárias:</strong> Estados que adotam políticas de imigração protecionistas, ampliando o cerco.</li>
+    </ul>
+
+    <h3>Os muros pelo mundo</h3>
+    <p>O capítulo destaca um dado revelador: <strong>após a queda do Muro de Berlim (1989)</strong> — símbolo da derrubada de fronteiras —, restavam apenas <strong>11 muros</strong> fronteiriços no mundo. Hoje, esse número subiu para cerca de <strong>70</strong>. Os mais emblemáticos:</p>
+    <div class="card">
+      <ol>
+        <li><strong>México — Estados Unidos:</strong> a fronteira mais movimentada do mundo, de Tijuana ao Golfo do México. Símbolo do controle migratório no continente americano.</li>
+        <li><strong>Marrocos — Espanha (Ceuta e Melilla):</strong> as cercas das cidades espanholas no norte da África — única fronteira terrestre direta entre a União Europeia e o continente africano.</li>
+        <li><strong>Israel — Faixa de Gaza / Cisjordânia:</strong> muros associados ao conflito israelo-palestino, com forte impacto sobre a circulação da população.</li>
+      </ol>
+    </div>
+    <div class="box prova">
+      <span class="tag">A grande síntese do capítulo</span>
+      <p>O paradoxo se fecha assim: <strong>quanto mais globalizado o mundo, mais muros foram construídos</strong>. A globalização não significou liberdade de circulação para todos — significou liberdade para <strong>capitais e mercadorias</strong> e <strong>cerco</strong> para o trabalhador pobre e o refugiado. Essa contradição é o coração do tema "Novos Fluxos Migratórios".</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSEQUÊNCIAS ============ -->
+<section id="consequencias">
+  <div class="wrap">
+    <span class="sec-num">07 — Efeitos</span>
+    <h2>Consequências das migrações</h2>
+    <p class="lead">Toda migração tem dois lados: o lugar de <strong>partida</strong> (que perde população) e o de <strong>chegada</strong> (que ganha). Os dois quadros do material resumem os efeitos — demográficos, econômicos e sociais.</p>
+
+    <h3>Quadro 1 — Consequências nas áreas de PARTIDA</h3>
+    <div class="tablewrap">
+      <table class="partida">
+        <caption>O que acontece no lugar de onde as pessoas saem (emigração)</caption>
+        <thead>
+          <tr><th>Demográficas</th><th>Econômicas</th><th>Sociais</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Diminuição da população absoluta e da pressão demográfica</td>
+            <td>Diminuição da mão de obra dos diversos setores</td>
+            <td>Enriquecimento e intercâmbio cultural</td>
+          </tr>
+          <tr>
+            <td>Pode conduzir a um saldo migratório negativo</td>
+            <td>Abandono dos campos agrícolas nas áreas rurais</td>
+            <td>Abandono das infraestruturas e serviços públicos</td>
+          </tr>
+          <tr>
+            <td>Diminuição da taxa de natalidade e da fecundidade</td>
+            <td>Diminuição do desemprego</td>
+            <td>Introdução de novas ideias, técnicas e hábitos</td>
+          </tr>
+          <tr>
+            <td>Diminuição da taxa de crescimento natural</td>
+            <td>Recepção de remessas enviadas pelos emigrantes</td>
+            <td>Diminuição dos encargos da Seguridade Social</td>
+          </tr>
+          <tr>
+            <td>Aumento da mortalidade (relativo, pelo envelhecimento)</td>
+            <td>Aumento dos salários (menos trabalhadores disponíveis)</td>
+            <td>Retrocesso no desenvolvimento regional</td>
+          </tr>
+          <tr>
+            <td>Envelhecimento da população</td>
+            <td>Diminuição do espírito empreendedor e da produtividade</td>
+            <td>Diminuição da população urbana</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Quadro 2 — Consequências nas áreas de CHEGADA</h3>
+    <div class="tablewrap">
+      <table class="chegada">
+        <caption>O que acontece no lugar que recebe as pessoas (imigração)</caption>
+        <thead>
+          <tr><th>Demográficas</th><th>Econômicas</th><th>Sociais</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aumento da população absoluta e da pressão demográfica</td>
+            <td>Aumento da mão de obra dos diversos setores</td>
+            <td>Enriquecimento e intercâmbio cultural</td>
+          </tr>
+          <tr>
+            <td>Pode conduzir a um saldo migratório positivo</td>
+            <td>Fragmentação e perda de direitos dos trabalhadores</td>
+            <td>Dificuldade de integração dos imigrantes</td>
+          </tr>
+          <tr>
+            <td>Aumento da taxa de natalidade e da fecundidade</td>
+            <td>Disponibilidade de mão de obra barata</td>
+            <td>Falta de habitação e aumento das favelas</td>
+          </tr>
+          <tr>
+            <td>Aumento da taxa de crescimento natural</td>
+            <td>Envio de remessas para o país de origem dos migrantes</td>
+            <td>Aumento dos encargos da Seguridade Social</td>
+          </tr>
+          <tr>
+            <td>Diminuição da mortalidade (relativo, população mais jovem)</td>
+            <td>Diminuição dos salários (mais trabalhadores disponíveis)</td>
+            <td>Saturação das infraestruturas e serviços públicos</td>
+          </tr>
+          <tr>
+            <td>Rejuvenescimento da população</td>
+            <td>Aumento do espírito empreendedor e da produtividade</td>
+            <td>Aumento dos conflitos sociais, do racismo e da xenofobia</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box complemento">
+      <span class="tag">Complemento — observe a lógica de espelho</span>
+      <p>Os dois quadros são quase <strong>imagens espelhadas</strong>: o que diminui na área de partida tende a aumentar na de chegada. A área de partida <strong>envelhece</strong>; a de chegada <strong>rejuvenesce</strong>. Entender essa simetria ajuda a memorizar tudo de uma vez.</p>
+      <p>Atenção a dois pontos sutis: (1) na área de partida, os salários tendem a <strong>subir</strong> (há menos trabalhadores), enquanto na de chegada tendem a <strong>cair</strong> (oferta abundante de mão de obra) — fato muitas vezes explorado por discursos xenófobos; (2) a expressão "bairros de lata", usada no material original (de Portugal), equivale ao que no Brasil chamamos de <strong>favelas</strong>.</p>
+    </div>
+    <div class="box pegadinha">
+      <span class="tag">⚠ Não caia no maniqueísmo</span>
+      <p>Migração <strong>não é só problema nem só solução</strong>. Ela traz, ao mesmo tempo, <strong>ganhos</strong> (mão de obra, rejuvenescimento demográfico, intercâmbio cultural, dinamismo econômico) e <strong>tensões</strong> (pressão sobre serviços públicos, conflitos sociais, xenofobia). Uma boa resposta de vestibular reconhece essa <strong>ambivalência</strong> em vez de defender um lado só.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PEGADINHAS ============ -->
+<section id="pegadinhas">
+  <div class="wrap">
+    <span class="sec-num">08 — Atenção</span>
+    <h2>Pontos de atenção e o que mais cai em prova</h2>
+    <p class="lead">Antes das questões, fixe os erros mais comuns e os "ganchos" prediletos das bancas.</p>
+
+    <h3>Erros frequentes</h3>
+    <div class="card">
+      <ul>
+        <li><strong>Trocar imigração e emigração.</strong> Lembre: <strong>I</strong>migra quem <strong>I</strong>ngressa; <strong>E</strong>migra quem sai (o "E" de Êxodo).</li>
+        <li><strong>Confundir imigrante com refugiado.</strong> Imigrante migra por escolha (em geral, motivos econômicos); refugiado migra <strong>forçado</strong>, fugindo de guerra ou perseguição.</li>
+        <li><strong>Confundir refugiado com deslocado interno.</strong> O refugiado <strong>cruza fronteira</strong>; o deslocado interno permanece <strong>dentro do próprio país</strong>.</li>
+        <li><strong>Misturar número absoluto e proporção.</strong> EUA lideram em número; Catar e demais países do Golfo lideram em porcentagem da população.</li>
+        <li><strong>Achar que a globalização libertou a circulação de pessoas.</strong> Ela liberou mercadorias e capitais — para os pobres, multiplicou os muros.</li>
+        <li><strong>Tratar migração como fenômeno só negativo (ou só positivo).</strong> Ela é ambivalente: tem custos e benefícios para ambos os lados.</li>
+      </ul>
+    </div>
+
+    <h3>O que mais cai em prova</h3>
+    <div class="box prova">
+      <span class="tag">Checklist de alta incidência</span>
+      <ul style="margin-top:6px;">
+        <li>O <strong>paradoxo da globalização</strong>: fronteiras abertas para o capital, fechadas para o migrante pobre.</li>
+        <li>A <strong>inversão dos fluxos após 1945</strong>: Europa deixa de ser origem e passa a ser destino.</li>
+        <li>Interpretação de <strong>mapas de fluxos</strong> (origem em laranja, destino em verde) e de <strong>gráficos de barras</strong>.</li>
+        <li>A relação entre <strong>conflitos/guerras</strong> e o aumento de <strong>refugiados e deslocados</strong>.</li>
+        <li>O caso do <strong>Golfo Pérsico</strong> (Catar, Emirados, Dubai): imigração de mão de obra para a construção civil e o petróleo, com altíssima proporção de estrangeiros.</li>
+        <li><strong>Muros e "fortalezas"</strong>: México–EUA, Ceuta/Melilla, e a multiplicação das barreiras após 1989.</li>
+        <li>O conceito de <strong>saldo migratório</strong> e sua relação com o crescimento populacional de países envelhecidos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUESTÕES ============ -->
+<section id="questoes">
+  <div class="wrap">
+    <span class="sec-num">09 — Prática</span>
+    <h2>Questões resolvidas</h2>
+    <p class="lead">As cinco questões do material, com gabarito e comentário. Tente resolver antes de revelar a resposta.</p>
+
+    <!-- Q1 -->
+    <div class="quiz">
+      <div class="src"><span class="qn">1</span>ENEM 2011</div>
+      <p class="stem">"As migrações transnacionais, intensificadas e generalizadas nas últimas décadas do século XX, expressam aspectos particularmente importantes da problemática racial, vista como dilema também mundial. Deslocam-se indivíduos, famílias e coletividades para lugares próximos e distantes [...]." (IANNI, O. <em>A era do globalismo</em>.)</p>
+      <p style="margin-top:10px;">A mobilidade populacional da segunda metade do século XX teve papel importante na formação social e econômica de diversos Estados nacionais. Uma razão para os movimentos migratórios nas últimas décadas e uma política migratória atual dos países desenvolvidos são:</p>
+      <ul class="alts">
+        <li class="right"><strong>a)</strong> a busca de oportunidades de trabalho e o aumento de barreiras contra a imigração.</li>
+        <li><strong>b)</strong> a necessidade de qualificação profissional e a abertura das fronteiras para os imigrantes.</li>
+        <li><strong>c)</strong> o desenvolvimento de projetos de pesquisa e o acautelamento dos bens dos imigrantes.</li>
+        <li><strong>d)</strong> a expansão da fronteira agrícola e a expulsão dos imigrantes qualificados.</li>
+        <li><strong>e)</strong> a fuga decorrente de conflitos políticos e o fortalecimento de políticas sociais.</li>
+      </ul>
+      <button class="reveal-btn" onclick="toggleAns(this)">Ver gabarito comentado</button>
+      <div class="answer">
+        <p class="gab">Gabarito: <span>A</span></p>
+        <p>A questão pede <strong>duas coisas</strong>: a <em>razão</em> da migração e a <em>política</em> dos países ricos. A razão principal continua sendo a <strong>busca por trabalho</strong> (migração econômica voluntária). E a política atual dos países desenvolvidos é justamente o <strong>aumento de barreiras</strong> — muros, vistos restritivos, centros de detenção. É exatamente o paradoxo da globalização. As demais alternativas erram por afirmar "abertura de fronteiras" (B) ou inverter a lógica dos fluxos.</p>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz">
+      <div class="src"><span class="qn">4</span>UFPB 2013</div>
+      <p class="stem">Os Emirados Árabes Unidos configuram-se hoje como um país de forte atração populacional, impulsionando a construção civil e o setor de finanças. Uma de suas cidades é Dubai, onde a população de imigrantes supera a própria população nativa.</p>
+      <p style="margin-top:10px;">Nesse contexto, o maior grupo de imigrantes que se instalou em Dubai é composto:</p>
+      <ul class="alts">
+        <li><strong>a)</strong> exclusivamente por europeus e norte-americanos, executivos de transnacionais, e latino-americanos na construção civil.</li>
+        <li><strong>b)</strong> exclusivamente por asiáticos de países subdesenvolvidos que trabalham nas grandes obras civis.</li>
+        <li class="right"><strong>c)</strong> principalmente por europeus e norte-americanos, executivos de transnacionais e/ou gerentes de projetos, e por asiáticos que trabalham nas construções como operários.</li>
+        <li><strong>d)</strong> principalmente por muçulmanos de países vizinhos que fogem de perseguições políticas e religiosas.</li>
+        <li><strong>e)</strong> exclusivamente por refugiados africanos que encontram trabalho na construção civil.</li>
+      </ul>
+      <button class="reveal-btn" onclick="toggleAns(this)">Ver gabarito comentado</button>
+      <div class="answer">
+        <p class="gab">Gabarito: <span>C</span></p>
+        <p>Dubai atrai <strong>dois perfis distintos</strong> de imigrantes: no topo, <strong>executivos e gerentes</strong> europeus e norte-americanos (alta qualificação, altos salários); na base, uma enorme massa de <strong>operários asiáticos</strong> (Índia, Paquistão, Bangladesh) na construção civil. As alternativas com a palavra <strong>"exclusivamente"</strong> (A, B, E) já estão erradas — o fluxo nunca é de um grupo só. A letra D ignora a motivação principal, que é <strong>econômica</strong>, não de refúgio.</p>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz">
+      <div class="src"><span class="qn">6</span>FGV-RJ 2014</div>
+      <p class="stem">Com base no mapa de fluxos de refugiados no mundo, é correto afirmar:</p>
+      <ul class="alts">
+        <li class="right"><strong>a)</strong> Países asiáticos que foram recentemente invadidos por tropas estrangeiras figuram entre os principais pontos de origem de refugiados.</li>
+        <li><strong>b)</strong> A maior parte dos refugiados do mundo realiza movimentos intercontinentais.</li>
+        <li><strong>c)</strong> Assim como os imigrantes, os refugiados tendem a se deslocar de países pobres para países ricos.</li>
+        <li><strong>d)</strong> Na América do Sul, três países situados na porção setentrional aparecem como ponto de destino de refugiados.</li>
+        <li><strong>e)</strong> No continente africano, os movimentos de refugiados não guardam relação com a proliferação de conflitos civis.</li>
+      </ul>
+      <button class="reveal-btn" onclick="toggleAns(this)">Ver gabarito comentado</button>
+      <div class="answer">
+        <p class="gab">Gabarito: <span>A</span></p>
+        <p>Países como <strong>Afeganistão e Iraque</strong>, palco de invasões militares, estão entre as maiores origens de refugiados — letra A correta. As demais são clássicas armadilhas: <strong>(B)</strong> a maioria dos refugiados foge para o <strong>país vizinho</strong>, não para outro continente; <strong>(C)</strong> o refugiado foge do <strong>perigo</strong>, indo para onde há segurança (geralmente um país vizinho, muitas vezes também pobre) — não segue a lógica econômica do imigrante; <strong>(D)</strong> os países do norte da América do Sul são origem, não destino; <strong>(E)</strong> na África, os conflitos civis são <strong>justamente</strong> a principal causa do refúgio.</p>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz">
+      <div class="src"><span class="qn">10</span>UFG 2012</div>
+      <p class="stem">Nos últimos anos, países como França, Inglaterra, Espanha e Itália viram se agravar seus conflitos internos, em alguns casos com manifestações violentas entre manifestantes e forças policiais, a maioria envolvendo jovens. Esses acontecimentos ocorreram por causa:</p>
+      <ul class="alts">
+        <li><strong>a)</strong> da intensificação dos movimentos antiglobalização desde o final da década de 1990.</li>
+        <li><strong>b)</strong> de movimentos pontuais de protesto contra a União Europeia e o euro.</li>
+        <li><strong>c)</strong> da luta da juventude pela paz mundial contra missões militares no Afeganistão e Iraque.</li>
+        <li class="right"><strong>d)</strong> do crescimento da migração de populações de outros países, envolvidas em guerras ou catástrofes ambientais, aliado à falta de emprego para a juventude, em virtude da extensão da crise econômica.</li>
+        <li><strong>e)</strong> da determinação da juventude que luta por reforma educacional e maior gratuidade do ensino superior.</li>
+      </ul>
+      <button class="reveal-btn" onclick="toggleAns(this)">Ver gabarito comentado</button>
+      <div class="answer">
+        <p class="gab">Gabarito: <span>D</span></p>
+        <p>A questão liga dois processos que aparecem no Quadro 2 (consequências nas áreas de chegada): o <strong>aumento da imigração</strong> de pessoas vindas de guerras e catástrofes e a <strong>crise econômica</strong> com desemprego juvenil. A combinação alimenta <strong>tensões sociais, racismo e xenofobia</strong> nos países europeus — exatamente a última linha daquele quadro. As outras alternativas trocam o tema migratório por pautas diferentes (antiglobalização, euro, educação).</p>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz">
+      <div class="src"><span class="qn">11</span>Mackenzie 2010</div>
+      <p class="stem">"Neste país, aproximadamente 30% dos filhos de estrangeiros são descendentes de um determinado grupo de imigrantes, somando mais de sete milhões de pessoas. Eles já são metade de todos os imigrantes e também a maior parcela dos imigrantes ilegais. [...] os que ainda tentam entrar pelos quase 4 mil quilômetros de fronteiras." O texto aborda a situação atual dos imigrantes:</p>
+      <ul class="alts">
+        <li><strong>a)</strong> turcos na Alemanha.</li>
+        <li class="right"><strong>b)</strong> mexicanos nos Estados Unidos.</li>
+        <li><strong>c)</strong> brasileiros em Portugal.</li>
+        <li><strong>d)</strong> argelinos na França.</li>
+        <li><strong>e)</strong> paquistaneses na Inglaterra.</li>
+      </ul>
+      <button class="reveal-btn" onclick="toggleAns(this)">Ver gabarito comentado</button>
+      <div class="answer">
+        <p class="gab">Gabarito: <span>B</span></p>
+        <p>A "chave" da questão é a <strong>fronteira de quase 4 mil quilômetros</strong> — a extensão da fronteira entre <strong>México e Estados Unidos</strong>. Soma-se a isso o grande volume de imigrantes (mais de 7 milhões) e a referência à imigração não documentada. Trata-se, portanto, dos <strong>mexicanos nos Estados Unidos</strong>, o maior fluxo migratório do continente americano.</p>
+      </div>
+    </div>
+
+    <div class="box complemento">
+      <span class="tag">Exercícios complementares do livro</span>
+      <p>Para fixar (Livro 04 — Frente A — Unidade 01 — Cap. 03): <strong>Aplicando Conhecimentos</strong> — pág. 65 (questões 1, 3, 6 e 7); <strong>Consolidando Saberes</strong> — pág. 66/67/68 (questões 1, 3, 6 e 9); <strong>No ENEM é Assim</strong> — pág. 69/70/71 (questões 1 e 3).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VÍDEOS ============ -->
+<section id="videos">
+  <div class="wrap">
+    <span class="sec-num">10 — Reforço</span>
+    <h2>Vídeos completos no YouTube</h2>
+    <p class="lead">Aulas completas de professores conhecidos entre vestibulandos. Clique no botão para ir direto ao vídeo.</p>
+    <div class="videos">
+      <a class="vbtn" href="https://www.youtube.com/watch?v=ytQdPM5LM7s" target="_blank" rel="noopener">
+        <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="vtext"><b>Movimentos Migratórios — Aula Completa</b><small>Aula completa de Geografia</small></span>
+      </a>
+      <a class="vbtn" href="https://www.youtube.com/watch?v=FGblBqfoVVw" target="_blank" rel="noopener">
+        <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="vtext"><b>Movimentos Migratórios Atuais: causas e consequências</b><small>Geografia para o ENEM · Raphael Carrieri</small></span>
+      </a>
+      <a class="vbtn" href="https://www.youtube.com/watch?v=kb4Xxnmc7oY" target="_blank" rel="noopener">
+        <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="vtext"><b>Migrações — Resumo de Geografia para o ENEM</b><small>Revisão objetiva do tema</small></span>
+      </a>
+      <a class="vbtn" href="https://www.youtube.com/watch?v=G8eLLaUxNZA" target="_blank" rel="noopener">
+        <span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="vtext"><b>Fluxos Migratórios — Extensivo ENEM (Aula 19)</b><small>Aula do Extensivo de Geografia</small></span>
+      </a>
+    </div>
+    <div class="box dado">
+      <span class="tag">Observação honesta sobre os links</span>
+      <p>Os links acima foram localizados por busca na web e apontam para vídeos públicos sobre o tema. Como conteúdos do YouTube podem ser alterados, tornados privados ou removidos pelos próprios canais a qualquer momento, confirme a disponibilidade ao abrir. Caso algum link não funcione, procure os mesmos títulos no YouTube — todos são de canais voltados a vestibulandos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVISÃO ============ -->
+<section id="revisao">
+  <div class="wrap">
+    <span class="sec-num">11 — Fechamento</span>
+    <h2>Revisão final dos conceitos</h2>
+    <p class="lead">Os pontos essenciais do capítulo, em formato de pergunta e resposta. Clique para conferir.</p>
+
+    <details class="keyrev">
+      <summary>Qual a diferença entre imigração e emigração?</summary>
+      <p>Imigração é a <strong>entrada</strong> de pessoas num território (visto pelo país que recebe); emigração é a <strong>saída</strong> (visto pelo país de origem). A mesma pessoa é imigrante e emigrante ao mesmo tempo.</p>
+    </details>
+    <details class="keyrev">
+      <summary>O que é saldo migratório e quando ele é positivo ou negativo?</summary>
+      <p>É a imigração menos a emigração. <strong>Positivo</strong> quando entram mais pessoas do que saem (país atrativo); <strong>negativo</strong> quando saem mais do que entram (país repulsivo). Junto com o crescimento vegetativo (natalidade − mortalidade), forma o crescimento populacional total.</p>
+    </details>
+    <details class="keyrev">
+      <summary>Diferencie fatores de repulsão e de atração.</summary>
+      <p>Fatores de <strong>repulsão (push)</strong> empurram a pessoa para fora da origem (desemprego, guerra, desastres). Fatores de <strong>atração (pull)</strong> puxam para o destino (emprego, segurança, melhores salários, estudos).</p>
+    </details>
+    <details class="keyrev">
+      <summary>Qual a diferença entre imigrante, refugiado e deslocado interno?</summary>
+      <p>O <strong>imigrante</strong> migra por escolha, em geral por motivos econômicos. O <strong>refugiado</strong> migra forçado, fugindo de guerra ou perseguição, e <strong>cruza uma fronteira internacional</strong>. O <strong>deslocado interno</strong> também é forçado a sair de casa, mas <strong>permanece dentro do próprio país</strong>.</p>
+    </details>
+    <details class="keyrev">
+      <summary>O que mudou nos fluxos migratórios após 1945?</summary>
+      <p>O sentido se inverteu. Antes, a Europa <strong>enviava</strong> migrantes para as Américas (emigração). Depois da Segunda Guerra, ela passou a <strong>receber</strong> migrantes de suas antigas colônias na África e na Ásia (imigração).</p>
+    </details>
+    <details class="keyrev">
+      <summary>Em que consiste o paradoxo da globalização?</summary>
+      <p>A globalização libera intensamente o fluxo de <strong>mercadorias, capitais e informações</strong>, mas <strong>restringe</strong> o fluxo de pessoas pobres. As fronteiras se tornaram seletivas — e os muros se multiplicaram (de 11, após a queda do Muro de Berlim, para cerca de 70 hoje).</p>
+    </details>
+    <details class="keyrev">
+      <summary>Por que número absoluto e proporção de migrantes não são a mesma coisa?</summary>
+      <p>Os <strong>EUA</strong> têm o maior número de imigrantes (52,4 milhões). Mas, em proporção da população, lideram os países do <strong>Golfo Pérsico</strong> — Catar (76,7%), Emirados (74%), Kuwait (67,3%) —, onde os estrangeiros são a maioria dos habitantes.</p>
+    </details>
+    <details class="keyrev">
+      <summary>Resuma as consequências para quem parte e para quem recebe.</summary>
+      <p>A área de <strong>partida</strong> perde população, <strong>envelhece</strong>, perde mão de obra, mas recebe remessas e alivia o desemprego. A área de <strong>chegada</strong> ganha população, <strong>rejuvenesce</strong>, ganha mão de obra (muitas vezes barata), mas enfrenta pressão sobre serviços públicos, queda de salários e risco de xenofobia. São quadros espelhados.</p>
+    </details>
+
+    <div class="card" style="margin-top:30px;border-left-color:var(--gold);">
+      <h3 style="margin-top:0;">Em uma frase</h3>
+      <p>Migrar é tão antigo quanto a humanidade — mas o mundo globalizado criou um <strong>paradoxo</strong>: nunca foi tão fácil circular mercadorias e capitais, e nunca houve tantos <strong>muros</strong> para conter as pessoas. Entender os fluxos migratórios é entender as <strong>desigualdades</strong> do planeta.</p>
+    </div>
+    <div class="divider">· · ·</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Novos Fluxos Migratórios</b> — Aula completa de Geografia Geral</p>
+    <p class="fsmall">Conteúdo baseado no material do Prof. Bruno Mastrocola · Livro 04 — Frente A — Unidade 01 — Cap. 03 (págs. 54-56 e 62-64).</p>
+    <p class="fsmall">Material de estudo organizado para alunos do 2º ano do Ensino Médio em preparação para vestibulares.</p>
+  </div>
+</footer>
+
+<script>
+  // barra de progresso de leitura
+  var bar=document.getElementById('progress');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var scrolled=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=scrolled+'%';
+  });
+  // revelar gabarito
+  function toggleAns(btn){
+    var ans=btn.nextElementSibling;
+    ans.classList.toggle('show');
+    btn.textContent=ans.classList.contains('show')?'Ocultar gabarito':'Ver gabarito comentado';
+  }
+</script>
+
+</body>
+</html>
